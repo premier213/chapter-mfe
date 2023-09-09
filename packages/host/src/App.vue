@@ -1,15 +1,18 @@
 <template>
   <div>
-    <h1>microfrontend react inside vue with MFE</h1>
+    <h1> microfrontend MFE react in vue</h1>
+    <label>Show<input type="checkbox" v-model="showUI" /></label>
+    <div v-if="showUI">
 
-     <h1> {{ counter }}</h1>
+      <h1>vue: {{ counter  }} in vue</h1>
+       <h1>react:</h1>
       <HelloWorld :count="counter" @click="testme" />
-
+    </div>
   </div>
 </template>
 
 <script>
-import { defineAsyncComponent, ref } from 'vue'
+import { defineAsyncComponent } from 'vue'
 import Loading from './components/Loading.vue'
 import Error from './components/Error.vue'
 
@@ -46,20 +49,17 @@ export default {
   components: {
     HelloWorld
   },
-  setup() {
-    const showUI = ref(false);
-    const counter = ref(5);
-
-    const testme = async () => {
-      counter.value++
-    }
-
+  data() {
     return {
-      showUI,
-      counter,
-      testme
+      showUI: false,
+      counter: 0
     }
-  }
+  },
+  methods: {
+    async testme() {
+      this.counter += 1
+    }
+  },
 }
 </script>
 

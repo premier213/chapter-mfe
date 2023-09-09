@@ -5,22 +5,22 @@ const { dependencies } = require('./package.json')
 
 module.exports = {
   node: false,
-  entry: './src/main.js',
+  entry: "./src/main.js",
   module: {
     rules: [
-      { test: /\.vue$/, use: 'vue-loader' },
-      { test: /\.css$/, use: [ 'vue-style-loader', 'css-loader' ] },
-    ]
+      { test: /\.vue$/, use: "vue-loader" },
+      { test: /\.css$/, use: ["vue-style-loader", "css-loader"] },
+    ],
   },
   plugins: [
     new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({ template: './public/index.html' }),
+    new HtmlWebpackPlugin({ template: "./public/index.html" }),
     new ModuleFederationPlugin({
-      name: 'host',
+      name: "host",
       remotes: {
-        library1: 'library1@http://localhost:8081/remoteEntry.js',
+        library1: "library1@http://52.56.69.249:8081/remoteEntry.js",
       },
       shared: dependencies,
-    })
+    }),
   ],
-}
+};
