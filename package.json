@@ -1,0 +1,16 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "init": "npm install && npm run clean && lerna bootstrap",
+    "clean": "cross-env lerna clean --yes && lerna exec -- rimraf dist",
+    "refresh": "lerna bootstrap",
+    "start": "lerna run start"
+  },
+  "devDependencies": {
+    "lerna": "^6.6.1"
+  }
+}
